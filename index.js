@@ -545,23 +545,119 @@
 // Object.assign(car,bike);
 // console.log(car1.__proto__);
 
-const car = {
-  name:'car',
-  color: 'black',
-  getDetails(brand, seats){
-    console.log(`This is a ${this.color} ${this.name} of ${brand} company, It has ${seats} seats`);
-  },
+// const car = {
+//   name:'car',
+//   color: 'black',
+//   getDetails(brand, seats){
+//     console.log(`This is a ${this.color} ${this.name} of ${brand} company, It has ${seats} seats`);
+//   },
+// }
+
+// const bus = {
+//   name:'bus',
+//   color:'red'
+// }
+
+// car.getDetails('Audi',2);
+
+// car.getDetails.call(bus,"Tata",56);
+// car.getDetails.apply(bus,['Best',40]);
+
+// const veh1 = car.getDetails.bind(bus);
+// veh1("NMMT",60);
+
+// const obj = {
+//   a:2,
+//   b:'a',
+//   c:69,
+//   d:'abd'
+// }
+
+// // const {a,c} = obj;
+// // console.log(a+c);
+
+// //Binding Pattern
+// const {a : a1} = obj;
+// console.log(a1);
+
+// //Assignment Pattern
+// let b;
+// ({b:b} = obj);
+// console.log(b);
+
+// const fruits = ["Banana","Apple","Mango","Kiwi"];
+
+// //Binding Pattern
+// // const [,a,m] = fruits;
+// // console.log(a,m);
+
+// const[a,m,...f] = fruits;
+// console.log(f);
+
+function main() {
+  // Create your constructor function with the name Shipment
+  function Shipment(id, location, destination, status, resources) {
+    this.id = id;
+    this.location = location;
+    this.destination = destination;
+    this.status = status;
+    this.resources = resources;
+  }
+
+  // Add the updateStatusAndResources using the object prototype
+  Shipment.prototype.updateStatusAndResources = function(status, resources) {
+    this.status = status;
+    this.resources = resources;
+  };
+
+  // Add the assignResource methods through Object prototype
+  Shipment.prototype.assignResources = function(...newResources) {
+    this.resources.push(...newResources);
+  };
+
+  // Create the object literal with the name TrackingSystem
+  const TrackingSystem = {
+    shipments: [],
+
+    updateStatus(id, status) {
+      const shipment = this.shipments.find(shipment => shipment.id === id);
+      if (shipment) {
+        shipment.status = status;
+      }
+    },
+
+    viewShipment(id) {
+      const shipment = this.shipments.find(shipment => shipment.id === id);
+      if (shipment) {
+        const { id, status, resources, location, destination } = shipment;
+        console.log(`Shipment ID: ${id}`);
+        console.log(`Status: ${status}`);
+        console.log(`Resources: ${resources.join(', ')}`);
+        console.log(`Location: ${location}`);
+        console.log(`Destination: ${destination}`);
+      }
+    }
+  };
+
+  return { Shipment, TrackingSystem };
 }
 
-const bus = {
-  name:'bus',
-  color:'red'
-}
+// Usage example
+const { Shipment, TrackingSystem } = main();
 
-car.getDetails('Audi',2);
+const shipment1 = new Shipment("12345", "New York", "Los Angeles", "En route", ["Driver", "Truck"]);
+shipment1.updateStatusAndResources("Delayed", ["Forklift"]);
+shipment1.assignResources("Worker", "Pallets");
 
-car.getDetails.call(bus,"Tata",56);
-car.getDetails.apply(bus,['Best',40]);
+const shipment2 = new Shipment("67890", "Chicago", "Miami", "In transit", ["Forklift"]);
+shipment2.updateStatusAndResources("In transit", ["Driver"]);
 
-const veh1 = car.getDetails.bind(bus);
-veh1("NMMT",60);
+TrackingSystem.shipments.push(shipment1, shipment2);
+
+TrackingSystem.updateStatus("12345", "Delivered");
+TrackingSystem.viewShipment("12345");
+
+// Expected Output:
+// Shipment ID: 12345
+// Status: Delivered
+// Resources: Fork
