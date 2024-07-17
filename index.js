@@ -662,54 +662,70 @@
 // // Status: Delivered
 // // Resources: Fork   
 
-function Vehicle(name, color, wheels){
-  this.name = name;
-  this.color = color;
-  this.wheels = wheels;
-}
-Vehicle.prototype.getDetails = function(){
-  console.log(`The ${this.name} is ${this.color} in color.
-    It has ${this.wheels} wheels.`);
-}
-const car = new Vehicle('Car','Red',4);
-console.log(car.__proto__);
-car.getDetails();
+// function Vehicle(name, color, wheels){
+//   this.name = name;
+//   this.color = color;
+//   this.wheels = wheels;
+// }
+// Vehicle.prototype.getDetails = function(){
+//   console.log(`The ${this.name} is ${this.color} in color.
+//     It has ${this.wheels} wheels.`);
+// }
+// const car = new Vehicle('Car','Red',4);
+// console.log(car.__proto__);
+// car.getDetails();
 
 // //Classes in Js ... Class Expression
 // const Veh = class{
 
 // }
 
-//Classes in Js ... Class Declaration
-class VehicleCl{
-  //properties
-  name;
-  color;
-  wheels;
+// //Classes in Js ... Class Declaration
+// class VehicleCl {
+//   //Normal properties
+//   name;
+//   color;
+//   wheels;
 
-  //constructor, only 1 per class
+//   //Private properties
+//   #regNum;
 
-  // constructor(){
-  //   this.name = 'Optimus Prime';
-  //   this.color = "Red/Blue";
-  //   this.wheels = 8;
-  // }
-  constructor(name,color,wheels){
-    this.name = name;
-    this.color = color;
-    this.wheels = wheels;
-  }
+//   //constructor, only 1 per class
+//   constructor(name, color, wheels, number) {
+//     this.name = name;
+//     this.color = color;
+//     this.wheels = wheels;
+//     this.#regNum = number;
+//   }
 
-  //methods
-  getDetails(){
-    console.log(`The ${this.name} is ${this.color} in color.
-      It has ${this.wheels} wheels.`);
-  }
-}
+//   //Normal methods
+//   getDetails() {
+//     console.log(`
+//       The ${this.name} is ${this.color} in color.
+//       It has ${this.wheels} wheels.
+//       The Registration Number is ${this.#getRegNum()}.`);
+//   }
 
-const vehicle1 = new VehicleCl('Truck','Blue',12);
-vehicle1.getDetails();
-console.log(vehicle1.__proto__);
+//   //Private methods
+//   #getRegNum() {
+//     return this.#regNum;
+//   }
+// }
+
+// const vehicle1 = new VehicleCl('Truck', 'Blue', 12, 6969);
+// vehicle1.getDetails();
+
+// class Car extends VehicleCl{
+//   constructor(color, brand, purpose) {
+//     super("Car", color, 4);
+//     this.brand = brand;
+//     this.purpose = purpose;
+//   }
+// }
+
+// const car1 = new Car('red','BMW','Logan Car');
+// car1.getDetails();
+// console.log(car1.__proto__);
 
 
 //Create the class with ES6 standard with mentioned properties and methods.
@@ -720,13 +736,13 @@ console.log(vehicle1.__proto__);
 //       name;
 //       age;
 //       gender;
-      
+
 //       constructor(name,age,gender){
 //           this.name=name;
 //           this.age=age;
 //           this.gender=gender;
 //       }
-      
+
 //       speak(){
 //           console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
 //       }
@@ -736,7 +752,7 @@ console.log(vehicle1.__proto__);
 //     person;
 //     major;
 //     gpa;
-    
+
 //     constructor(person, major, gpa){
 //       this.person = person;
 //       this.major = major;
@@ -758,6 +774,305 @@ console.log(vehicle1.__proto__);
 //   const kiraStud = new Student(kira,"IT",8.97);
 //   kiraStud.study();
 //   kiraStud.speak();
-  
+
 //   return {Person,Student};
 // }
+
+// const array = [1,2,3,4,5];
+// const sum = array.reduce((total, num, index) => {
+//     console.log(total, index);
+//     return total+num;
+// });
+
+//complete the ExpenseTracker class.
+// Do not alter the starter code
+// class ExpenseTracker {
+//   //Create your private properites here
+//   #expenses = [];
+//   #income;
+
+
+//   //Create a constructor function
+//   constructor(income) {
+//     this.#income = income;
+//   }
+//   //create your private properties to calculate expenses
+//   #calculateTotalExpenses() {
+//     return this.#expenses.reduce((acc, item) => {
+//       return acc + item.amount;
+//     }, 0);
+//   }
+//   //Create your public properties here
+//   addExpense(name, amount, date) {
+//     this.#expenses.push({ name: name, amount: amount, date: date });
+//   }
+//   calculateBalance() {
+//     return this.#income - this.#calculateTotalExpenses();
+//   }
+// }
+// //The class should function accordingly.
+// const tracker = new ExpenseTracker(5000);
+// tracker.addExpense("Rent", 1000, "2021-10-01");
+// tracker.addExpense("Groceries", 500, "2021-10-02");
+// console.log(tracker.calculateBalance()); // should output 3500  
+
+
+// class Media {
+//   constructor(title, artist, duration) {
+//     this.title = title;
+//     this.artist = artist;
+//     this.duration = duration;
+//   }
+
+//   getTitle() {
+//     return this.title;
+//   }
+
+//   getArtist() {
+//     return this.artist;
+//   }
+
+//   getDuration() {
+//     return this.duration;
+//   }
+// }
+
+// // Create a Class Song extending the Media with proper constructor, properties, and methods
+// class Song extends Media {
+//   constructor(title, artist, duration, album, genre) {
+//     super(title, artist, duration);
+//     this.album = album;
+//     this.genre = genre;
+//   }
+
+//   getAlbum() {
+//     return this.album;
+//   }
+
+//   getGenre() {
+//     return this.genre;
+//   }
+// }
+
+// // Create a class Podcast inheriting from Media
+// class Podcast extends Media {
+//   constructor(title, artist, duration, host, topic) {
+//     super(title, artist, duration);
+//     this.host = host;
+//     this.topic = topic;
+//   }
+
+//   getHost() {
+//     return this.host;
+//   }
+
+//   getTopic() {
+//     return this.topic;
+//   }
+// }
+
+// // Create class PopSong and RockSong using Song class
+// class PopSong extends Song {
+//   constructor(title, artist, duration, album, genre, danceability, energy) {
+//     super(title, artist, duration, album, genre);
+//     this.danceability = danceability;
+//     this.energy = energy;
+//   }
+
+//   getDanceability() {
+//     return this.danceability;
+//   }
+
+//   getEnergy() {
+//     return this.energy;
+//   }
+// }
+
+// class RockSong extends Song {
+//   constructor(title, artist, duration, album, genre, distortion, tempo) {
+//     super(title, artist, duration, album, genre);
+//     this.distortion = distortion;
+//     this.tempo = tempo;
+//   }
+
+//   getDistortion() {
+//     return this.distortion;
+//   }
+
+//   getTempo() {
+//     return this.tempo;
+//   }
+// }
+
+// // Create NewsPodcast and ComedyPodcast using the Podcast class
+// class NewsPodcast extends Podcast {
+//   constructor(title, artist, duration, host, topic, source, rating) {
+//     super(title, artist, duration, host, topic);
+//     this.source = source;
+//     this.rating = rating;
+//   }
+
+//   getSource() {
+//     return this.source;
+//   }
+
+//   getRating() {
+//     return this.rating;
+//   }
+// }
+
+// class ComedyPodcast extends Podcast {
+//   constructor(title, artist, duration, host, topic, comedian, rating) {
+//     super(title, artist, duration, host, topic);
+//     this.comedian = comedian;
+//     this.rating = rating;
+//   }
+
+//   getComedian() {
+//     return this.comedian;
+//   }
+
+//   getRating() {
+//     return this.rating;
+//   }
+// }
+
+// // Your code will be evaluated on the basis of these operations
+// const popSong = new PopSong(
+//   "Shape of You",
+//   "Ed Sheeran",
+//   235,
+//   "÷",
+//   "Pop",
+//   0.825,
+//   0.652
+// );
+// console.log(popSong.getTitle()); // should output 'Shape of You'
+// console.log(popSong.getArtist()); // should output 'Ed Sheeran'
+// console.log(popSong.getDuration()); // should output 235
+// console.log(popSong.getAlbum()); // should output '÷'
+// console.log(popSong.getGenre()); // should output 'Pop'
+// console.log(popSong.getDanceability()); // should output 0.825
+// console.log(popSong.getEnergy()); // should output 0.652
+
+// const rockSong = new RockSong(
+//   "Stairway to Heaven",
+//   "Led Zeppelin",
+//   482,
+//   "Led Zeppelin IV",
+//   "Rock",
+//   0.056,
+//   63.5
+// );
+// console.log(rockSong.getTitle()); // should output 'Stairway to Heaven'
+// console.log(rockSong.getArtist()); // should output 'Led Zeppelin'
+// console.log(rockSong.getDuration()); // should output 482
+// console.log(rockSong.getAlbum()); // should output 'Led Zeppelin IV'
+// console.log(rockSong.getGenre()); // should output 'Rock'
+// console.log(rockSong.getDistortion()); // should output 0.056
+// console.log(rockSong.getTempo()); // should output 63.5
+
+// const newsPodcast = new NewsPodcast(
+//   "The Daily",
+//   "The New York Times",
+//   30,
+//   "Michael Barbaro",
+//   "News",
+//   "The New York Times",
+//   4.5
+// );
+// console.log(newsPodcast.getTitle()); // should output 'The Daily'
+// console.log(newsPodcast.getArtist()); // should output 'The New York Times'
+// console.log(newsPodcast.getDuration()); // should output 30
+// console.log(newsPodcast.getHost()); // should output 'Michael Barbaro'
+// console.log(newsPodcast.getTopic()); // should output 'News'
+// console.log(newsPodcast.getSource()); // should output 'The New York Times'
+// console.log(newsPodcast.getRating()); // should output 4.5
+
+// const comedyPodcast = new ComedyPodcast(
+//   "My Favorite Murder",
+//   "Karen Kilgariff and Georgia Hardstark",
+//   60,
+//   "Karen Kilgariff and Georgia Hardstark",
+//   "Comedy",
+//   "Karen Kilgariff and Georgia Hardstark",
+//   4.8
+// );
+// console.log(comedyPodcast.getTitle()); // should output 'My Favorite Murder'
+// console.log(comedyPodcast.getArtist()); // should output 'Karen Kilgariff and Georgia Hardstark'
+// console.log(comedyPodcast.getDuration()); // should output 60
+// console.log(comedyPodcast.getHost()); // should output 'Karen Kilgariff and Georgia Hardstark'
+// console.log(comedyPodcast.getTopic()); // should output 'Comedy'
+// console.log(comedyPodcast.getComedian()); // should output 'Karen Kilgariff and Georgia Hardstark'
+// console.log(comedyPodcast.getRating()); // should output 4.8
+
+
+// function Vehicle(name,wheels) {
+//   this.name = name;
+//   this.wheels = wheels;
+// }
+
+// Vehicle.prototype.getVehicleDetails = function () {
+//   console.log(`Name: ${this.name}\nWheels: ${this.wheels}`);
+// }
+
+// function Car(color, brand, seats) {
+//   Vehicle.call(this, 'Car', 4);
+//   this.color = color;
+//   this.brand = brand;
+//   this.seats = seats;
+// }
+
+// Car.prototype = Object.create(Vehicle.prototype);
+
+// Car.prototype.getDetails = function(){
+//   console.log(`Name: ${this.name}\nColor: ${this.color}\nWheels: ${this.wheels}\nBrand: ${this.brand}\nSeats: ${this.seats}`);
+// }
+
+// const car1 = new Car('Red','Konigsegg',2);
+// car1.getDetails();
+// car1.getVehicleDetails();
+
+// function Character(health, strength, agility){
+//   this.health = health;
+//   this.strength = strength;
+//   this.agility = agility;
+// }
+// //Create Warrior ,Mage, Enemy and Archer constructor fntion inheriting Character
+// function Warrior(health, strength, agility, weaponType){
+//   Character.call(this, health, strength, agility);
+//   this.weaponType = weaponType;
+// }
+// function Mage(health, strength, agility, spellType){
+//   Character.call(this, health, strength, agility);
+//   this.spellType = spellType;
+// }
+// function Archer(health, strength, agility, arrowType){
+//   Character.call(this, health, strength, agility);
+//   this.arrowType = arrowType;
+// }
+// function Enemy(health, strength, agility, enemyType){
+//   Character.call(this, health, strength, agility);
+//   this.enemyType = enemyType;
+// }
+// //Create constructor function for Hero inheriting Hero and Mage
+// function Hero(health, strength, agility, weaponType, spellType, specialAbility){
+//   Character.call(this, health, strength, agility);
+//   Warrior.call(this, weaponType);
+//   Mage.call(this, spellType);
+//   this.specialAbility = specialAbility;
+// }
+
+// let warrior1 = new Warrior(100, 50, 30, "sword");
+// let mage1 = new Mage(80, 20, 50, "fireball");
+// let archer1 = new Archer(90, 40, 40, "poison");
+// let hero1 = new Hero(120, 60, 40, "axe", "ice", "double damage");
+// let enemy1 = new Enemy(200, 80, 20, "goblin");
+
+// console.log(warrior1);
+// console.log(mage1);
+// console.log(archer1);
+// console.log(hero1);
+// console.log(enemy1);
+
+ 
