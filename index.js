@@ -594,70 +594,170 @@
 // const[a,m,...f] = fruits;
 // console.log(f);
 
-function main() {
-  // Create your constructor function with the name Shipment
-  function Shipment(id, location, destination, status, resources) {
-    this.id = id;
-    this.location = location;
-    this.destination = destination;
-    this.status = status;
-    this.resources = resources;
+// function main() {
+//   // Create your constructor function with the name Shipment
+//   function Shipment(id, location, destination, status, resources) {
+//     this.id = id;
+//     this.location = location;
+//     this.destination = destination;
+//     this.status = status;
+//     this.resources = resources;
+//   }
+
+//   // Add the updateStatusAndResources using the object prototype
+//   Shipment.prototype.updateStatusAndResources = function(status, resources) {
+//     this.status = status;
+//     this.resources = resources;
+//   };
+
+//   // Add the assignResource methods through Object prototype
+//   Shipment.prototype.assignResources = function(...newResources) {
+//     this.resources.push(...newResources);
+//   };
+
+//   // Create the object literal with the name TrackingSystem
+//   const TrackingSystem = {
+//     shipments: [],
+
+//     updateStatus(id, status) {
+//       const shipment = this.shipments.find(shipment => shipment.id === id);
+//       if (shipment) {
+//         shipment.status = status;
+//       }
+//     },
+
+//     viewShipment(id) {
+//       const shipment = this.shipments.find(shipment => shipment.id === id);
+//       if (shipment) {
+//         const { id, status, resources, location, destination } = shipment;
+//         console.log(`Shipment ID: ${id}`);
+//         console.log(`Status: ${status}`);
+//         console.log(`Resources: ${resources.join(', ')}`);
+//         console.log(`Location: ${location}`);
+//         console.log(`Destination: ${destination}`);
+//       }
+//     }
+//   };
+
+//   return { Shipment, TrackingSystem };
+// }
+
+// // Usage example
+// const { Shipment, TrackingSystem } = main();
+
+// const shipment1 = new Shipment("12345", "New York", "Los Angeles", "En route", ["Driver", "Truck"]);
+// shipment1.updateStatusAndResources("Delayed", ["Forklift"]);
+// shipment1.assignResources("Worker", "Pallets");
+
+// const shipment2 = new Shipment("67890", "Chicago", "Miami", "In transit", ["Forklift"]);
+// shipment2.updateStatusAndResources("In transit", ["Driver"]);
+
+// TrackingSystem.shipments.push(shipment1, shipment2);
+
+// TrackingSystem.updateStatus("12345", "Delivered");
+// TrackingSystem.viewShipment("12345");
+
+// // Expected Output:
+// // Shipment ID: 12345
+// // Status: Delivered
+// // Resources: Fork   
+
+function Vehicle(name, color, wheels){
+  this.name = name;
+  this.color = color;
+  this.wheels = wheels;
+}
+Vehicle.prototype.getDetails = function(){
+  console.log(`The ${this.name} is ${this.color} in color.
+    It has ${this.wheels} wheels.`);
+}
+const car = new Vehicle('Car','Red',4);
+console.log(car.__proto__);
+car.getDetails();
+
+// //Classes in Js ... Class Expression
+// const Veh = class{
+
+// }
+
+//Classes in Js ... Class Declaration
+class VehicleCl{
+  //properties
+  name;
+  color;
+  wheels;
+
+  //constructor, only 1 per class
+
+  // constructor(){
+  //   this.name = 'Optimus Prime';
+  //   this.color = "Red/Blue";
+  //   this.wheels = 8;
+  // }
+  constructor(name,color,wheels){
+    this.name = name;
+    this.color = color;
+    this.wheels = wheels;
   }
 
-  // Add the updateStatusAndResources using the object prototype
-  Shipment.prototype.updateStatusAndResources = function(status, resources) {
-    this.status = status;
-    this.resources = resources;
-  };
-
-  // Add the assignResource methods through Object prototype
-  Shipment.prototype.assignResources = function(...newResources) {
-    this.resources.push(...newResources);
-  };
-
-  // Create the object literal with the name TrackingSystem
-  const TrackingSystem = {
-    shipments: [],
-
-    updateStatus(id, status) {
-      const shipment = this.shipments.find(shipment => shipment.id === id);
-      if (shipment) {
-        shipment.status = status;
-      }
-    },
-
-    viewShipment(id) {
-      const shipment = this.shipments.find(shipment => shipment.id === id);
-      if (shipment) {
-        const { id, status, resources, location, destination } = shipment;
-        console.log(`Shipment ID: ${id}`);
-        console.log(`Status: ${status}`);
-        console.log(`Resources: ${resources.join(', ')}`);
-        console.log(`Location: ${location}`);
-        console.log(`Destination: ${destination}`);
-      }
-    }
-  };
-
-  return { Shipment, TrackingSystem };
+  //methods
+  getDetails(){
+    console.log(`The ${this.name} is ${this.color} in color.
+      It has ${this.wheels} wheels.`);
+  }
 }
 
-// Usage example
-const { Shipment, TrackingSystem } = main();
+const vehicle1 = new VehicleCl('Truck','Blue',12);
+vehicle1.getDetails();
+console.log(vehicle1.__proto__);
 
-const shipment1 = new Shipment("12345", "New York", "Los Angeles", "En route", ["Driver", "Truck"]);
-shipment1.updateStatusAndResources("Delayed", ["Forklift"]);
-shipment1.assignResources("Worker", "Pallets");
 
-const shipment2 = new Shipment("67890", "Chicago", "Miami", "In transit", ["Forklift"]);
-shipment2.updateStatusAndResources("In transit", ["Driver"]);
+//Create the class with ES6 standard with mentioned properties and methods.
+//Do not alter the starter Code
+// function main(){
+//   //Implement your class here
+//   class Person{
+//       name;
+//       age;
+//       gender;
+      
+//       constructor(name,age,gender){
+//           this.name=name;
+//           this.age=age;
+//           this.gender=gender;
+//       }
+      
+//       speak(){
+//           console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+//       }
+//   }
 
-TrackingSystem.shipments.push(shipment1, shipment2);
+//   class Student{
+//     person;
+//     major;
+//     gpa;
+    
+//     constructor(person, major, gpa){
+//       this.person = person;
+//       this.major = major;
+//       this.gpa = gpa;
+//     }
 
-TrackingSystem.updateStatus("12345", "Delivered");
-TrackingSystem.viewShipment("12345");
+//     study(){
+//       console.log(`I am Studying ${this.major} and my GPA is ${this.gpa}`);
+//     }
 
-// Expected Output:
-// Shipment ID: 12345
-// Status: Delivered
-// Resources: Fork
+//     speak(){
+//       console.log(`Hello, my name is ${this.person.name} and I am ${this.person.age} years old. I am also a student studying ${this.major}.`);
+//     }
+//   }
+
+//   const kira = new Person("Kira",22,"Male");
+//   kira.speak();
+
+//   const kiraStud = new Student(kira,"IT",8.97);
+//   kiraStud.study();
+//   kiraStud.speak();
+  
+//   return {Person,Student};
+// }
