@@ -1007,32 +1007,6 @@
 // console.log(comedyPodcast.getRating()); // should output 4.8
 
 
-// function Vehicle(name,wheels) {
-//   this.name = name;
-//   this.wheels = wheels;
-// }
-
-// Vehicle.prototype.getVehicleDetails = function () {
-//   console.log(`Name: ${this.name}\nWheels: ${this.wheels}`);
-// }
-
-// function Car(color, brand, seats) {
-//   Vehicle.call(this, 'Car', 4);
-//   this.color = color;
-//   this.brand = brand;
-//   this.seats = seats;
-// }
-
-// Car.prototype = Object.create(Vehicle.prototype);
-
-// Car.prototype.getDetails = function(){
-//   console.log(`Name: ${this.name}\nColor: ${this.color}\nWheels: ${this.wheels}\nBrand: ${this.brand}\nSeats: ${this.seats}`);
-// }
-
-// const car1 = new Car('Red','Konigsegg',2);
-// car1.getDetails();
-// car1.getVehicleDetails();
-
 // function Character(health, strength, agility){
 //   this.health = health;
 //   this.strength = strength;
@@ -1075,4 +1049,401 @@
 // console.log(hero1);
 // console.log(enemy1);
 
- 
+
+
+// function Vehicle(name,wheels) {
+//   this.name = name;
+//   this.wheels = wheels;
+// }
+
+// Vehicle.prototype.getVehicleDetails = function () {
+//   console.log(`Name: ${this.name}\nWheels: ${this.wheels}`);
+// }
+
+// function Car(color, brand, seats) {
+//   Vehicle.call(this, 'Car', 4);
+//   this.color = color;
+//   this.brand = brand;
+//   this.seats = seats;
+// }
+
+// Car.prototype = Object.create(Vehicle.prototype);
+
+// Car.prototype.getDetails = function(){
+//   console.log(`Name: ${this.name}\nColor: ${this.color}\nWheels: ${this.wheels}\nBrand: ${this.brand}\nSeats: ${this.seats}`);
+// }
+
+// const car1 = new Car('Red','Konigsegg',2);
+// car1.getDetails();
+// car1.getVehicleDetails();
+
+
+
+// // Classes in Js ... Class Declaration
+// class VehicleCl {
+//   //Normal properties
+//   name;
+//   color;
+//   wheels;
+
+//   //static properties
+//   static age = 68;
+
+//   //Private properties
+//   #regNum;
+
+//   //constructor, only 1 per class
+//   constructor(name, color, wheels, number, age) {
+//     this.name = name;
+//     this.color = color;
+//     this.wheels = wheels;
+//     this.#regNum = number;
+//     this.age = age;
+//   }
+
+//   //Normal methods
+//   getDetails() {
+//     console.log(`
+//       The ${this.name} is ${this.color} in color.
+//       It has ${this.wheels} wheels.
+//       The Registration Number is ${this.#getRegNum()}.`);
+//   }
+
+//   //Private methods
+//   #getRegNum() {
+//     return this.#regNum;
+//   }
+
+//   //static method
+//   static getCode(){
+//     console.log('this is static');
+//   }
+// }
+
+// const veh1 = new VehicleCl('Agera','Red', 4, 1, 69);
+// console.log(veh1);
+// VehicleCl.getCode();
+
+// class Message{
+//   static totalMessages = 0;
+//   static status = false;
+
+//   constructor(sender, receiver, messageContent){
+//       this.sender = sender;
+//       this.receiver = receiver;
+//       this.messageContent = messageContent;
+//   }
+
+//   static recordMessage(){
+//     Message.totalMessages++;
+//   }
+//   static changeStatus(){
+//     Message.status = !(Message.status);
+//     const statusText = Message.status ? "online" : "offline";
+//     console.log(`The status has been changed to ${statusText}`)
+//   }
+
+//   sendMessage(){
+//       console.log(`The message ${this.messageContent} has been sent from ${this.sender} to ${this.receiver}`);
+//       Message.recordMessage();
+//   }
+
+//   displayDetails(){
+//     const statusText = Message.status ? "online" : "offline";
+//     console.log(`Sender: ${this.sender}`);
+//     console.log(`Receiver: ${this.receiver}`);
+//     console.log(`Message: ${this.messageContent}`);
+//     console.log(`Status: ${statusText}`);
+//     console.log(`Total Messages: ${Message.totalMessages}`);
+//   }
+// } 
+
+// Message.changeStatus();
+// const myMessage = new Message("John", "Jane", "Hello");
+// myMessage.sendMessage();
+// myMessage.displayDetails();
+
+// class Circle{
+//   constructor(radius){
+//     this.radius = radius;
+//   }
+
+//   get diameter(){
+//     return this.radius*2;
+//   }
+
+//   set diameter(newDiameter){
+//     if(newDiameter > 0)
+//       this.radius = newDiameter/2;
+//     else
+//       console.log('Invalid Input');
+//   }
+
+//   // getDiameter(){
+//   //   console.log(`Diameter: `+ this.radius*2);
+//   // }
+
+// }
+
+// const circle = new Circle(5);
+// console.log(circle.radius);
+// circle.diameter = -50;\
+
+// class Account {
+//   // Constructor to initialize accountNumber and balance
+
+//   // Private properties
+//   #accountNumber;
+//   #balance;
+
+//   constructor(accountNumber) {
+//     this.#accountNumber = accountNumber;
+//     this.#balance = 0; // Default balance is set to 0
+//   }
+
+//   // Getter for balance
+//   get getBalance() {
+//     return this.#balance;
+//   }
+
+//   // Setter for balance
+//   set setBalance(value) {
+//     if (value < 0) {
+//       console.log("Please enter a positive value for the balance");
+//     } else {
+//       this.#balance = value;
+//     }
+//   }
+
+//   // Method to deposit money into the account
+//   deposit(amount) {
+//     if (amount > 0) {
+//       this.#balance += amount;
+//     } else {
+//       console.log("Please enter a positive value to deposit");
+//     }
+//   }
+
+//   // Method to withdraw money from the account
+//   withdraw(amount) {
+//     if (amount > this.#balance) {
+//       console.log("Insufficient balance");
+//     } else if (amount < 0) {
+//       console.log("Please enter a positive value to withdraw");
+//     } else {
+//       this.#balance -= amount;
+//     }
+//   }
+// }
+
+// // Example usage
+// const myAccount = new Account("1234567890");
+// myAccount.deposit(-500);
+// myAccount.withdraw(200);
+// console.log(myAccount.balance); // output: 300
+
+// const today = new Date();
+
+// console.log(Date.now());
+
+// const birthDate = new Date(2002,4,3,10);
+// console.log(birthDate);
+
+// console.log(birthDate.toJSON());
+
+// const user1 = {
+//   username: "Kira",
+//   age: 12,
+//   marks: {
+//     maths: 69,
+//     english: 95,
+//   }
+// };
+
+// //Deep Copy
+// const user2 = JSON.parse(JSON.stringify(user1));
+// console.log(user2);
+
+// const user2 = user1;
+// console.log(user2);
+// console.log(user1);
+// user2.username = 'Harry';
+// console.log(user2);
+// console.log(user1);
+
+//Shallow Copy
+
+// const user2 = {...user1};
+// console.log(user2);
+// user2.username = "Habibi";
+// console.log(user2);
+// console.log(user1);
+
+// const user3 = Object.assign({},user1);
+
+// console.log(user3);
+// console.log(user1);
+// user3.username = 'Harry';
+// console.log(user3);
+// console.log(user1);
+
+
+
+// class User {
+//   #name;
+//   #email;
+//   #password;
+//   #posts;
+
+//   constructor(name, email, password) {
+//     this.#name = name;
+//     this.#email = email;
+//     this.#password = password;
+//     this.#posts = [];
+//   }
+
+//   get name() {
+//     return this.#name;
+//   }
+//   get email() {
+//     return this.#email;
+//   }
+//   get password() {
+//     return this.#password;
+//   }
+//   set name(newName) {
+//     this.#name = newName;
+//   }
+//   set email(newEmail) {
+//     this.#email = newEmail;
+//   }
+//   set password(newPassword) {
+//     this.#password = newPassword;
+//   }
+//   addPost(post) {
+//     this.#posts.push(post);
+//   }
+//   removePost(post) {
+//     this.#posts  = this.#posts.filter(obj => obj.title !== post.title);
+//   }
+//   displayPosts() {
+//     console.log("Output:");
+//     console.log(`Post by ${this.#name}`);
+//     for(let post of this.#posts){
+//       console.log(`- ${post.title}`);
+//     }
+//   }
+// }
+
+// //Create your class "Post" here inheritting the User class with all the properties and methods as mentioned
+// class Post extends User {
+//   #name;
+//   #email;
+//   #password;
+//   #title;
+//   #content;
+//   #date;
+//   #likeCount;
+
+//   constructor(name, email, password, title, content, date) {
+//     super();
+//     this.#name = name;
+//     this.#email = email;
+//     this.#password = password;
+//     this.#title = title;
+//     this.#content = content;
+//     this.#date = date;
+//     this.#likeCount = 0;
+//   }
+//   get name() {
+//     return this.#name;
+//   }
+//   get email() {
+//     return this.#email;
+//   }
+//   get password() {
+//     return this.#password;
+//   }
+//   get title() {
+//     return this.#title;
+//   }
+//   get content() {
+//     return this.#content;
+//   }
+//   get date() {
+//     return this.#date;
+//   }
+
+//   set name(newName) {
+//     this.#name = newName;
+//   }
+//   set email(newEmail) {
+//     this.#email = newEmail;
+//   }
+//   set password(newPassword) {
+//     this.#password = newPassword;
+//   }
+//   set title(newTitle) {
+//     this.#title = newTitle;
+//   }
+//   set content(newContent) {
+//     this.#content = newContent;
+//   }
+//   set date(newDate) {
+//     this.#date = newDate;
+//   }
+
+//   addLike(){
+//     this.#likeCount++;
+//   }
+
+//   displayDetails(){
+//     console.log("Output:");
+//     console.log(`Owner: ${this.#name}`);
+//     console.log(`Title: ${this.#title}`);
+//     console.log(`Content: ${this.#content}`);
+//     console.log(`Date: ${this.#date}`);
+//     console.log(`Likes: ${this.#likeCount}`);
+//   }
+// }
+
+
+// const user1 = new User("John", "john@example.com", "password123");
+// const post1 = new Post(
+//   "John",
+//   "john@example.com",
+//   "password123",
+//   "My first post",
+//   "Lorem ipsum dolor sit amet",
+//   "2021-01-01"
+// );
+// const post2 = new Post(
+//   "John",
+//   "john@example.com",
+//   "password123",
+//   "My second post",
+//   "Consectetur adipiscing elit",
+//   "2021-01-02"
+// );
+
+// user1.addPost(post1);
+// user1.addPost(post2);
+
+// post1.addLike();
+// post1.addLike();
+
+// user1.displayPosts();
+// // Output:
+// // Posts by John:
+// // - My first post
+// // - My second post
+
+// post1.displayDetails();
+// // Output:
+// // Owner: John
+// // Title: My first post
+// // Content: Loremipsum dolor sit amet
+// // Date: 2021-01-01
+// // Likes: 2
+
+
